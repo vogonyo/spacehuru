@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Container } from 'semantic-ui-react';
 import './App.css';
+import SpaceDashboard from '../../features/space/SpaceDashboard/SpaceDashboard';
+import NavBar from '../../features/nav/NavBar/NavBar'; 
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <h1> ReCodes</h1>
+      <div>
+      <NavBar/>
+      <Container className="main">
+       <SpaceDashboard />
+      </Container>
       </div>
     );
   }
