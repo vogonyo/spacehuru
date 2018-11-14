@@ -4,12 +4,14 @@ import {Grid } from 'semantic-ui-react';
 
 class SpaceList extends Component {
   render() {
+    const { spaces } = this.props;
     return (
       <Grid stackable >
-        <Grid.Column width = {5}><SpaceListItem /></Grid.Column>
-        <Grid.Column width = {5}><SpaceListItem /></Grid.Column>
-        <Grid.Column width = {5}><SpaceListItem /></Grid.Column>
-        <Grid.Column width = {5}><SpaceListItem /></Grid.Column>               
+        
+        {spaces.map((space) => (
+          <Grid.Column width= {6} key={space.id}>  <SpaceListItem key={space.id} space={space}/> </Grid.Column> 
+        ))}
+                
       </Grid>
     )
   }

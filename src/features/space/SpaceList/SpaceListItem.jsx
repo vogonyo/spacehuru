@@ -1,25 +1,29 @@
 import React, { Component } from 'react'
-import { Card, Image} from 'semantic-ui-react';
-import { ThumbsUp, MapMarkerAlt, Heart } from 'styled-icons/fa-solid';
+import { Card} from 'semantic-ui-react';
+//import { ThumbsUp, MapMarkerAlt, Heart, ChevronCircleRight } from 'styled-icons/fa-solid';
+import SpaceListPhotos from './SpaceListPhotos';
 
 class SpaceListItem extends Component {
-  render() {
+   render() {
+    const {space} = this.props;
     return (
+          <div>
           <Card>
-          <Image src='https://www.spacehuru.com/wp-content/uploads/2018/01/img_2451.jpg' />
-          <Card.Content>
-            <Card.Header>Twig Co Work</Card.Header>
+            <SpaceListPhotos space={space}/>
+            <Card.Content>
+            <Card.Header>{space.title}</Card.Header>
             <Card.Meta>
-              <MapMarkerAlt size="12"/><span>WestLands, Nairobi</span>
+              <span>{space.location}</span>
             </Card.Meta>
-            <Card.Description>Matthew is a musician living in Nashville.</Card.Description>
+            <Card.Description>
+                 {space.description}
+            </Card.Description>
           </Card.Content>
           <Card.Content extra>
-           <ThumbsUp size="28"/><Heart size="24" className="right floated"/>
           </Card.Content>
         </Card>
            
-          
+        </div>
        )
   }
 }
