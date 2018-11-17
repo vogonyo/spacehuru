@@ -3,6 +3,7 @@ import {Segment, Form, Button} from 'semantic-ui-react';
 
 class SpaceForm extends Component{
     render(){
+       const {handleCancel} = this.props;
         return(
             <div>
                      <Segment>
@@ -47,7 +48,7 @@ class SpaceForm extends Component{
                          <Button positive type="submit">
                            Submit
                          </Button>
-                         <Button type="button">Cancel</Button>
+                         <Button onClick={handleCancel} type="button">Cancel</Button>
                        </Form>
                      </Segment>
             </div>

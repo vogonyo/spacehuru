@@ -15,7 +15,7 @@ class App extends Component {
       <NavBar/>
       <Container className="main">
        <Route path="/spaces" component={SpaceDashboard}/>
-       <Route path="/addSpace" component={AddSpace}/>
+       <Route path="/new" component={AddSpace}/>
       </Container>
       </div>
     );

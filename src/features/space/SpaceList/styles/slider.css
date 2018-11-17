@@ -1,8 +1,8 @@
 .slider {
     position: relative;
-    width: 500px;
+    width: 200px;
     margin: 0 auto;
-    height: 500px;
+    height: 200px;
     overflow: hidden;
     white-space: nowrap;
   }
@@ -10,7 +10,7 @@
   .slider-wrapper {
     position: relative;
     height: 100%;
-    width: 100%;
+    width:100%;
   }
   
   .slide {

@@ -1,49 +1,26 @@
 import React, { Component } from 'react';
 import  '../../space/SpaceList/styles/slider.css';
 import 'font-awesome/css/font-awesome.min.css';
-
-
-
-// class SpaceListPhotos extends Component {
-  
-//   render() {
-//     const {space} = this.props;
-//     return (
-//       <div>
-//       <div class="slider slider1">
-//       <div class="slides">
-//         <div class="slide-item item1">
-//           <Image src={space.thumbnailURL} />
-//         </div>
-//         <div class="slide-item item2"> 
-//            <Image src={space.thumbnailURL} />
-//         </div>
-//         <div class="slide-item item3">
-//            <Image src={space.thumbnailURL} />
-//         </div>
-//         <div class="slide-item item4">
-//         </div>
-//       </div>
-//      </div>
-//       </div>
-
-//     )
-//   }
-// }
+import {spacesList} from '../SpaceDashboard/SpaceDashboard.jsx'; 
 
 class SpaceListPhotos extends Component {
   constructor(props) {
     super(props)
     
     this.state = {
+      // images: [
+      //   "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/canyon.jpg",
+      //   "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/city.jpg",
+      //   "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/desert.jpg",
+      //   "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/mountains.jpg",
+      //   "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/redsky.jpg",
+      //   "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/sandy-shores.jpg",
+      //   "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/tree-of-life.jpg"
+      // ],
       images: [
-        "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/canyon.jpg",
-        "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/city.jpg",
-        "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/desert.jpg",
-        "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/mountains.jpg",
-        "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/redsky.jpg",
-        "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/sandy-shores.jpg",
-        "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/tree-of-life.jpg"
+         spacesList[1].Photos[0].photoURL,
+         spacesList[1].Photos[0].photoURL,
+         spacesList[1].Photos[0].photoURL
       ],
       currentIndex: 0,
       translateValue: 0

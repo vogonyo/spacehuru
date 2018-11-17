@@ -4,7 +4,7 @@ import React , { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
 import SpaceList from '../SpaceList/SpaceList';
 
-const spacesList = [
+export const spacesList = [
   {
     id: '1',
     title: 'Nyama Mama',
@@ -38,7 +38,7 @@ const spacesList = [
     location: 'Mombasa',
     hostedBy: 'Tom',
     thumbnailURL: 'http://www.travelstart.co.ke/blog/wp-content/uploads/2014/11/SetHeight800-Villa-Rosa-Kempinski-Swimming-Pool.jpg',
-    photos: [
+    Photos: [
       {
         id: '1',
         photoURL: 'https://randomuser.me/api/portraits/men/22.jpg'
@@ -52,6 +52,14 @@ const spacesList = [
 ]
 
 class SpaceDashboard extends Component {
+   constructor(props){
+     super(props)
+
+     this.state = {
+       spaces: spacesList
+     }
+   }
+ 
     render() {
         return (
             <Grid >
@@ -59,7 +67,7 @@ class SpaceDashboard extends Component {
                     <h2>Filters</h2>
                 </Grid.Column>
                 <Grid.Column width = {12}>    
-                      <SpaceList spaces= {spacesList}/>
+                      <SpaceList spaces= {this.state.spaces}/>
                 </Grid.Column>
             </Grid>
         )
