@@ -19,7 +19,7 @@ class AddSpace extends Component {
       isOpen: false
     });
   }
-
+  
   render() {
     return (
       <Grid>

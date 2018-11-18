@@ -1,13 +1,16 @@
 
 
 import React , { Component } from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Button } from 'semantic-ui-react';
+import cuid from 'cuid';
 import SpaceList from '../SpaceList/SpaceList';
+import SpaceForm from '../SpaceForm/SpaceForm';
+
 
 export const spacesList = [
   {
     id: '1',
-    title: 'Nyama Mama',
+    name: 'Nyama Mama',
     date: '2018-03-27',
     category: 'Restaurant',
     description:
@@ -29,7 +32,7 @@ export const spacesList = [
   },
   {
     id: '2',
-    title: 'Sankara',
+    name: 'Sankara',
     date: '2018-03-28',
     category: 'restaurant',
     description:
@@ -52,22 +55,51 @@ export const spacesList = [
 ]
 
 class SpaceDashboard extends Component {
-   constructor(props){
-     super(props)
-
-     this.state = {
-       spaces: spacesList
+     state = {
+       spaces: spacesList,
+       isOpen: false,
+       selectedSpace: null
      }
+     
+     handleFormOpen = () => {
+      this.setState({
+          selectedSpace: null,
+          isOpen: true
+      });
+    }
+  
+    handleCancel = () =>{
+      this.setState({
+        isOpen: false
+      });
+    }
+   handleSelectedSpace = (spaceToUpdate) => () => {
+       this.setState({
+          selectedSpace: spaceToUpdate,
+          isOpen: true
+       });
    }
+   handleCreateSpace = (newSpace) => {
+      newSpace.id = cuid();
+      newSpace.PhotoURL = '/assets/user.png';
+      const updatedSpaces = [...this.state.spaces, newSpace];
+      this.setState({
+        spaces: updatedSpaces,
+        isOpen: false
+      });
+     }
  
     render() {
+       const {selectedSpace} = this.state;
         return (
             <Grid >
-                <Grid.Column width = {4}>
+                <Grid.Column width = {6}>
                     <h2>Filters</h2>
+                    <Button onClick={this.handleFormOpen} positive content="Create Space" className="ui floated right"/>
+                    {this.state.isOpen && <SpaceForm selectedSpace={selectedSpace} createSpace={this.handleCreateSpace} handleCancel={this.handleCancel}/>}
                 </Grid.Column>
-                <Grid.Column width = {12}>    
-                      <SpaceList spaces= {this.state.spaces}/>
+                <Grid.Column width = {10}>    
+                      <SpaceList onSpaceSelect={this.handleSelectedSpace} spaces= {this.state.spaces}/>
                 </Grid.Column>
             </Grid>
         )
