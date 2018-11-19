@@ -49,7 +49,7 @@ class SpaceForm extends Component{
   }
   render(){
     const {handleCancel} = this.props;
-    const {space} = this.state;
+    const { space } = this.state;
       return(
             <div>
                      <Segment>
