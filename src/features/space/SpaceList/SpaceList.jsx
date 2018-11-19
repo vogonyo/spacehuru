@@ -4,12 +4,18 @@ import {Grid } from 'semantic-ui-react';
 
 class SpaceList extends Component {
   render() {
-    const { spaces , onSpaceSelect} = this.props;
+    const { spaces , onSpaceOpen, deleteSpace} = this.props;
     return (
       <Grid stackable >
         
         {spaces.map((space) => (
-          <Grid.Column width= {6} key={space.id}>  <SpaceListItem key={space.id} space={space} onSpaceSelect={onSpaceSelect}/> </Grid.Column> 
+          <Grid.Column width= {6} key={space.id}>  
+          <SpaceListItem 
+               key={space.id} 
+               space={space} 
+               onSpaceOpen={onSpaceOpen}
+               deleteSpace={deleteSpace} 
+               /> </Grid.Column> 
         ))}
                 
       </Grid>

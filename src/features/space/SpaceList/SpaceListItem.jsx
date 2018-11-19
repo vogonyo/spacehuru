@@ -5,7 +5,7 @@ import SpaceListPhotos from './SpaceListPhotos';
 
 class SpaceListItem extends Component {
    render() {
-    const {space, onSpaceSelect} = this.props;
+    const {space, onSpaceOpen, deleteSpace} = this.props;
     return (
           <div>
           <Card>
@@ -16,14 +16,15 @@ class SpaceListItem extends Component {
               <span>{space.location}</span>
             </Card.Meta>
             <Card.Meta>
-              <span>{space.date}</span>
+                <span>{space.date}</span>
             </Card.Meta>
             <Card.Description>
                  {space.description}
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
-             <Button onClick={onSpaceSelect(space)} color="teal" floated="right" content="View"/>
+             <Button onClick={deleteSpace(space.id)} color="red" floated="right" content="Delete"/>
+             <Button onClick={onSpaceOpen(space)} color="teal" floated="right" content="View"/>
           </Card.Content>
         </Card>
            

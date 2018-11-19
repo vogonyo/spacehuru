@@ -4,7 +4,7 @@ import {Segment, Form, Button} from 'semantic-ui-react';
 const emptySpace = {
   name: '',
   description: '',
-  availabilityDate: '',
+  date: '',
   pricing: '',
   billing: '',
   size: '',
@@ -26,12 +26,19 @@ class SpaceForm extends Component{
     }
   }
   componentWillReceiveProps(nextProps){
-     console.log('current:', this.props.selectedSpace);
-     console.log('next: ', nextProps.selectedSpace);
+     if(nextProps.selectedSpace !== this.props.selectedSpace){
+       this.setState({
+          space: nextProps.selectedSpace || emptySpace
+       });
+     }
   }
   onFormSubmit = (e) =>{
       e.preventDefault() ;
-      this.props.createSpace(this.state.space);  
+      if(this.state.space.id){
+        this.props.updateSpace(this.state.space);
+      }else{
+        this.props.createSpace(this.state.space);
+      }
   }
   onInputChange = (e) => {
      const newSpace = this.state.space;
@@ -57,8 +64,8 @@ class SpaceForm extends Component{
                          </Form.Field>
                          
                          <Form.Field>
-                           <label>Date </label>
-                           <input name='availabilityDate' onChange={this.onInputChange} value={space.availabilityDate} type="date" placeholder="Date from which space is available" />
+                           <label>Date Available</label>
+                           <input name='date' onChange={this.onInputChange} value={space.date} type="date" placeholder="Date from which space is available" />
                          </Form.Field>
                          <Form.Field>
                            <label>Pricing </label>

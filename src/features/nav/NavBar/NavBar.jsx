@@ -16,7 +16,7 @@ class NavBar extends Component {
                   <Menu.Item name="Nomads" />
                   <Menu.Item name="Travel" />
                   <Menu.Item as={NavLink} to='/new'>
-                  <Button floated="right" inverted content="Add Space" />
+                  <Button floated="right" inverted content="new space" />
                   </Menu.Item>
                   <Menu.Item position="right">
                     <Button basic inverted content="Login" />

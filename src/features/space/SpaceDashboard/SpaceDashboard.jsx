@@ -11,10 +11,10 @@ export const spacesList = [
   {
     id: '1',
     name: 'Nyama Mama',
-    date: '2018-03-27',
+    date: '2018-11-12',
     category: 'Restaurant',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ligula eu leo tincidunt, quis scelerisque magna dapibus. Sed eget ipsum vel arcu vehicula ullamcorper.',
+      'Sankara Hotels & Resorts creates and operates luxury and upperect local culture, food, art and design.',
     city: '',
     location: "Nairobi, Kenya",
     hostedBy: 'Bob',
@@ -33,10 +33,10 @@ export const spacesList = [
   {
     id: '2',
     name: 'Sankara',
-    date: '2018-03-28',
+    date: '2018-01-06',
     category: 'restaurant',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ligula eu leo tincidunt, quis scelerisque magna dapibus. Sed eget ipsum vel arcu vehicula ullamcorper.',
+      'Sankara Hotels & Resorts creates and operates luxury and upperect local culture, food, art and design.',
     city: 'London, UK',
     location: 'Mombasa',
     hostedBy: 'Tom',
@@ -44,11 +44,11 @@ export const spacesList = [
     Photos: [
       {
         id: '1',
-        photoURL: 'https://randomuser.me/api/portraits/men/22.jpg'
+        photoURL: 'http://www.sankara.com/d/sankararedesign/media/__thumbs_582_336_crop/RESTAURANTBARS_Sarabi5.jpg?1473132865'
       },
       {
         id: '2',
-        photoURL: 'https://randomuser.me/api/portraits/men/20.jpg'
+        photoURL: 'https://www.africanmeccasafaris.com/wp-content/uploads/sankaranairobi2.jpg'
       }
     ]
   }
@@ -73,9 +73,28 @@ class SpaceDashboard extends Component {
         isOpen: false
       });
     }
-   handleSelectedSpace = (spaceToUpdate) => () => {
+    handleUpdatedSpace = (updatedSpace) => {
        this.setState({
-          selectedSpace: spaceToUpdate,
+         spaces: this.state.spaces.map(space => {
+           if(space.id === updatedSpace.id){
+             return Object.assign({}, updatedSpace)
+           }else{
+             return space;
+           }
+         }),
+          isOpen: false,
+          selectedSpace: null
+       });
+    }
+    handleDeleteSpace = (spaceId) => () => {
+       const updatedSpaces = this.state.spaces.filter(e => e.id !== spaceId);
+       this.setState({
+         spaces: updatedSpaces
+       });
+    }
+   handleOpenSpace = (spaceToOpen) => () => {
+       this.setState({
+          selectedSpace: spaceToOpen,
           isOpen: true
        });
    }
@@ -88,7 +107,7 @@ class SpaceDashboard extends Component {
         isOpen: false
       });
      }
- 
+     
     render() {
        const {selectedSpace} = this.state;
         return (
@@ -96,10 +115,10 @@ class SpaceDashboard extends Component {
                 <Grid.Column width = {6}>
                     <h2>Filters</h2>
                     <Button onClick={this.handleFormOpen} positive content="Create Space" className="ui floated right"/>
-                    {this.state.isOpen && <SpaceForm selectedSpace={selectedSpace} createSpace={this.handleCreateSpace} handleCancel={this.handleCancel}/>}
+                    {this.state.isOpen && <SpaceForm updateSpace={this.handleUpdatedSpace} selectedSpace={selectedSpace} createSpace={this.handleCreateSpace} handleCancel={this.handleCancel}/>}
                 </Grid.Column>
                 <Grid.Column width = {10}>    
-                      <SpaceList onSpaceSelect={this.handleSelectedSpace} spaces= {this.state.spaces}/>
+                      <SpaceList deleteSpace={this.handleDeleteSpace} onSpaceOpen={this.handleOpenSpace} spaces= {this.state.spaces}/>
                 </Grid.Column>
             </Grid>
         )
