@@ -27,11 +27,12 @@ class NavBar extends Component {
           <Menu inverted fixed="top">
                 <Container>
                   <Menu.Item header as={Link} to="/">
-                    <img src="assets/spacehurulogo.png" alt="logo" />
+                    <img src="/assets/spacehurulogo.png" alt="logo" />
                     Spacehuru
                   </Menu.Item>
                   <Menu.Item name="Spaces" as={NavLink} to='/spaces' />
                   <Menu.Item name="Nomads" as={NavLink} to='/nomads'/>
+                  {autheticated && <Menu.Item name="Hosts" as={NavLink} to='/hosts'/>  }                  
                   <Menu.Item name="Travel" as={NavLink} to='/travel'/>
                   <Menu.Item>
                   <Button as={Link} to="/createSpace" floated="right" inverted content="new space" />
