@@ -10,6 +10,8 @@ import UserDetailed from '../../features/user/UserDetailed/UserDetailed';
 import PeopleDashboard from '../../features/user/PeopleDashboard/PeopleDashboard';
 import SpaceDetailedPage from '../../features/space/SpaceDashboard/SpaceDashboard';
 import SettingsDashboard from '../../features/user/Settings/SettingsDashboard';
+import TestComponent from '../../features/TestArea/TestComponent';
+
 
 class App extends Component {
   render() {
@@ -23,6 +25,7 @@ class App extends Component {
             <NavBar/>
             <Container className="main">
                 <Switch>
+                  <Route path="/test" component={TestComponent}/>
                   <Route path="/spaces" component={SpaceDashboard}/>
                   <Route path="/space/:id" component={SpaceDetailedPage}/>
                   <Route path="/nomads" component={PeopleDashboard}/>

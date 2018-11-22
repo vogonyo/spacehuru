@@ -32,6 +32,7 @@ class NavBar extends Component {
                   </Menu.Item>
                   <Menu.Item name="Spaces" as={NavLink} to='/spaces' />
                   <Menu.Item name="Nomads" as={NavLink} to='/nomads'/>
+                  <Menu.Item name="Test" as={NavLink} to='/test'/>
                   {autheticated && <Menu.Item name="Hosts" as={NavLink} to='/hosts'/>  }                  
                   <Menu.Item name="Travel" as={NavLink} to='/travel'/>
                   <Menu.Item>
