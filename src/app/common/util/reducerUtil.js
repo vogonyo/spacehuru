@@ -1,5 +1,3 @@
-import { type } from "os";
-
 export const createReducer = (initialState, fnMap) => {
    return (state = initialState, {type, payload}) => {
        const handler = fnMap[type];

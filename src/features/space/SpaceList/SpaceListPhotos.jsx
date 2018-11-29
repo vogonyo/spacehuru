@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import  '../../space/SpaceList/styles/slider.css';
 import 'font-awesome/css/font-awesome.min.css';
-import {spacesList} from '../SpaceDashboard/SpaceDashboard.jsx'; 
+import {initialState} from '../../space/spaceReducer'; 
 
 class SpaceListPhotos extends Component {
   constructor(props) {
@@ -18,9 +18,9 @@ class SpaceListPhotos extends Component {
       //   "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/tree-of-life.jpg"
       // ],
       images: [
-         spacesList[1].Photos[0].photoURL,
-         spacesList[1].Photos[0].photoURL,
-         spacesList[1].Photos[0].photoURL
+         initialState[1].Photos[0].photoURL,
+         initialState[1].Photos[0].photoURL,
+         initialState[1].Photos[0].photoURL
       ],
       currentIndex: 0,
       translateValue: 0
